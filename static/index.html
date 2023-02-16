@@ -1,0 +1,165 @@
+<!--
+Copyright 2020- IBM Inc. All rights reserved
+
+SPDX-License-Identifier: Apache2.0
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>IBM Responsible and Inclusive Technology</title>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/uilogger.js"></script> 
+<link type="text/css" rel="stylesheet" href="css/incltech-common.css" media="screen" />
+<link rel="icon" href="./favicon.png" type="image/x-icon" />
+</head>
+<body>
+
+<div id="header"><div id="headerTitle">IBM <strong>Responsible and Inclusive Technology</strong></div></div>
+
+<div id="main">
+<h1 id="mainTitle">Recommendation Prototype</h1>
+<p>This is a demo page to showcase the API that aims to support people to use and follow the R&I Framework, enabling easier connection of multiple content management systems (e.g., challenges portal, publisher) to a recommendation service that brings contextualized R&I information. The recommendations provided would involve stakeholders, questions from the framework, and definitions about R&I terms.</p>
+
+<textarea id="content" rows="10" cols="70" style="width: 100%" name="issue" placeholder="Enter a content">
+How can we build a cloud-based resource that is informed by environmental justice ideas, filled with diverse datasets, and allows for cross stakeholder collaboration via data- and community-driven simulations and policy considerations?
+</textarea>
+<div id="recommendation"><strong>Recommended question:</strong> <div id="recommendationContent">No request performed yet.</div></div>
+<div id="definitions"><strong>Found definitions:</strong> <div id="definitionsContent"><strong>No request performed yet</strong></div></div>
+
+<!-- <div id="card" class="flip-card">
+    <div class="flip-card-inner">
+      <div id="cardFront" class="flip-card-front">
+        <h2>Classes identified</h2>
+        <div id="cardFrontContent"></div>
+      </div>
+      <div id="cardBack" class="flip-card-back">
+        <h2>Framework question</h2>
+        <div id="cardBackContent"></div>
+      </div>
+    </div>
+  </div> 
+
+</div> -->
+
+<script type="text/javascript"> 
+var minInterval = 2000 ;
+var lastRequest = Date.now() ;
+// Function used to request content from the framework
+function getContent( inputId ){
+    // Only performs request when the last char from a field is a punctuation
+    var flag = false ;
+    var c = $( inputId ).val().charAt( $( inputId ).val().length - 1 ) ;
+    if( c.search( /[\.\?;\n]/i ) == 0 ){
+        flag = true ;
+    }
+    if( !flag ){
+        return ;
+    }
+    if( Date.now() - lastRequest < minInterval ){
+        return ;
+    }
+    lastRequest = Date.now() ; 
+
+    // Requesting questions based on the content
+    var phrases = $( inputId ).val().trim() ;
+    phrases = phrases.split( /[\.\?;\n]/i ) ;
+    lastPhrase = phrases.pop() ;
+    while( lastPhrase == "" && phrases.length > 0 ){
+        lastPhrase = phrases.pop() ;
+    }
+    console.debug( "---> " + lastPhrase ) ;
+
+    $.get( "/incltech/question/" + encodeURI( lastPhrase ), function( data ){
+        // console.debug( "Requesting question related to " + $( inputId ).val().trim() ) ;
+    }).done( function( data ){
+        if( data.questions ){ 
+            if( data.questions.length > 0 ){
+                $( "#recommendationContent" ).html( data.questions[0].text ) ;
+                $( "#recommendationContent" ).append( "<p>Source: <a href='" + data.questions[0].source.url + "' target='_blank'>" + data.questions[0].source.name + "</a></p>" ) ;
+                $( "#cardBackContent" ).html( data.questions[0].text.substring( data.questions[0].text.indexOf("<strong>"), data.questions[0].text.indexOf("</strong>") ) ) ;
+                $( "#cardBackContent" ).append( "<p>Source: <a href='" + data.questions[0].source.url + "' target='_blank'>" + data.questions[0].source.name + "</a></p>" ) ;
+            }
+            else{
+                $( "#recommendationContent" ).html( "None." ) ;
+                $( "#cardBackContent" ).html( "None." ) ;
+            }
+        }
+        else{
+            $( "#recommendationContent" ).html( "None." ) ;
+            $( "#cardBackContent" ).html( "None." ) ;
+        }
+    });
+
+    // Requesting classes based on the content
+    $.get( "/incltech/class/" + encodeURI( lastPhrase ), function( data ){
+        // console.debug( "Requesting classes related to " + $( inputId ).val().trim() ) ;
+    }).done( function( data ){
+        if( data.classes ){
+            if( data.classes.length > 0 ){
+                let list = "<ul>" ;
+                for( let i = 0; i < data.classes.length; i++ ){
+                    list += "<li>" + data.classes[i].name + ": " + data.classes[i].value + "</li>" ;
+                }
+                list += "</ul>" ;
+                $( "#cardFrontContent" ).html( list ) ;
+            }
+            else{
+                $( "#cardFrontContent" ).html( "None." ) ;
+                
+            }
+        }
+        else{
+            $( "#cardFrontContent" ).html( "None." ) ;
+        }
+    });
+
+    // Requesting definitions for the input content
+    var words = lastPhrase.split( " " ) ;
+    $( "#definitionsContent" ).html( "" ) ;
+    for( let i = 0; i < words.length; i++ ){
+        if( words[i].length >= 2 ){
+            $.get( "/incltech/define/" + encodeURI( words[i] ), function( data ){
+                // console.debug( "Requesting definition for " + words[i] ) ;
+            }).done( function( data ){
+                if( data.term ){
+                    if( $( "#definitionsContent" ).html() == "<strong>No definitions found</strong>" ){
+                        $( "#definitionsContent" ).html( "" ) ;
+                    }
+
+                    if( $( "#definitionsContent" ).html().indexOf( data.term ) == -1 ){
+                        $( "#definitionsContent" ).append( " <strong title=\"" + data.definition + "\">" + data.term + "</strong>" ) ;
+                    }
+                }
+            });
+
+            // Searching for 2-grams
+            if( i < words.length - 1 ){
+                if( words[i] && words[i+1] ){
+                    $.get( "/incltech/define/" + encodeURI( words[i] + " " + words[i+1] ), function( data ){
+                        // console.debug( "Requesting definition for " + words[i] ) ;
+                    }).done( function( data ){
+                        if( data.term ){
+                            if( $( "#definitionsContent" ).html() == "<strong>No definitions found</strong>" ){
+                                $( "#definitionsContent" ).html( "" ) ;
+                            }                            
+                            if( $( "#definitionsContent" ).html().indexOf( data.term ) == -1 ){
+                                $( "#definitionsContent" ).append( " <strong title=\"" + data.definition + "\">" + data.term + "</strong>" ) ;
+                            }
+                        }
+                    });
+                } 
+            }
+        }
+    }
+    if( $( "#definitionsContent" ).html() == "" ){
+        $( "#definitionsContent" ).html( "<strong>No definitions found</strong>" ) ;
+    }
+}
+$( '#content' ).bind( 'focus keyup', function(){ getContent( '#content' ) } );
+
+// Logging code
+// $(window).uilogger( { userId : '', server : '/uilogger/record', onlyID : true, ajaxType : 'POST' } ) ; 
+</script>
+</body>
+</html>

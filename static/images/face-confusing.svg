@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="icon"
+   viewBox="0 0 32 32"
+   version="1.1"
+   sodipodi:docname="face-confusing.svg"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1031"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="24.34375"
+     inkscape:cx="7.0038511"
+     inkscape:cy="13.535302"
+     inkscape:window-width="1792"
+     inkscape:window-height="1067"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="icon" />
+  <defs
+     id="defs1015">
+    <style
+       id="style1013">.cls-1{fill:none;}</style>
+  </defs>
+  <title
+     id="title1017">face--add</title>
+  <path
+     d="m 16,21.027507 a 6,-6 0 0 0 -5.14,2.92 l -1.71,-1 a 8,-8 0 0 1 13.7,0 l -1.71,1 a 6,-6 0 0 0 -5.14,-2.92 z"
+     id="path1019" />
+  <path
+     d="M11.5,11A2.5,2.5,0,1,0,14,13.5,2.48,2.48,0,0,0,11.5,11Z"
+     id="path1023" />
+  <path
+     d="M20.5,11A2.5,2.5,0,1,0,23,13.5,2.48,2.48,0,0,0,20.5,11Z"
+     id="path1025" />
+  <path
+     d="M27.61,13A12.33,12.33,0,0,1,28,16,12,12,0,1,1,16,4V2A14,14,0,1,0,29.67,13Z"
+     id="path1027" />
+  <rect
+     id="_Transparent_Rectangle_"
+     data-name="&lt;Transparent Rectangle&gt;"
+     class="cls-1"
+     width="32"
+     height="32" />
+  <metadata
+     id="metadata1398">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>face--add</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <circle
+     cx="25.028811"
+     cy="9.3571196"
+     r="0.91316772"
+     id="circle1420"
+     style="stroke-width:0.608778" />
+  <path
+     d="M 25.637589,-0.07894615 H 24.724421 A 2.7334153,2.7334153 0 0 0 21.984919,2.660557 v 0.3043893 h 1.217556 V 2.660557 a 1.5219462,1.5219462 0 0 1 1.521946,-1.5219461 h 0.913168 a 1.5219462,1.5219462 0 0 1 0,3.0438923 h -1.217557 v 2.7395033 h 1.217557 V 5.4000604 a 2.7395033,2.7395033 0 0 0 0,-5.47900655 z"
+     id="path1422"
+     style="stroke-width:0.608778" />
+</svg>

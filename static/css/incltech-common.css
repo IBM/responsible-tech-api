@@ -1,0 +1,821 @@
+/*
+Copyright 2020- IBM Inc. All rights reserved
+
+SPDX-License-Identifier: Apache2.0
+*/
+
+* { font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; }
+
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #fff;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+}
+
+ol {
+    margin-bottom: 1em;    
+    margin-top: 0;    
+}
+
+ol li {
+    padding: 0.2em;
+}
+
+button, input[type='button'] {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1em;
+    padding: 1em;
+    border: none;
+    color: #fff;
+    background-color: #2466f6;
+}
+
+button:disabled, input[type='button']:disabled, #filterGraphByEdge, #filterGraphByNode {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1em;
+    padding: 1em;
+    border: none;
+    color: #fff;
+    background-color: #3d3d3d;
+}
+
+button {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1em;
+    padding: 1em;
+    border: none;
+    color: #fff;
+    background-color: #2466f6;
+}
+
+label {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8em;
+    color: #3d3d3d;
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+input {
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    border: none;
+    font-size: 1em;
+    color: #000;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #3d3d3d;
+    padding: 0.5em;     
+}
+
+select, option {
+    width: 30%;
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    border: none;
+    font-size: 1em;
+    color: #000;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #3d3d3d;
+    padding: 0.5em; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='30' viewBox='0 0 30 30' width='30' xmlns='http://www.w3.org/2000/svg'><line x1='10' y1='10' x2='15' y2='15' style='stroke:rgb(0,0,0);stroke-width:1' /><line x1='15' y1='15' x2='20' y2='10' style='stroke:rgb(0,0,0);stroke-width:1' /></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+}
+
+select:disabled, option:disabled {
+    color: #ccc;
+}
+
+div#header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 1em;    
+    background-color: #000;
+    color: #fff;
+}
+
+div#main {
+    padding-top: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 45%;
+}
+
+div#mainFull {
+    padding-top: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 90%;
+}
+
+div#infovis{
+    padding-top: 3em;
+    width: 45%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+div#cy {
+    width: 90%;
+    height: 500px;
+    display: block;
+    border: none;
+    border: 1px solid #8c8c8c;
+    margin-bottom: 0.5em;
+}
+
+div#cyStatus {
+    width: 90%;
+    height: 20px;
+
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    border: none;
+    font-size: 0.8em;
+    color: #000;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #3d3d3d;
+    padding: 0.2em; 
+    margin-bottom: 0.5em;
+    margin-top: -0.8em;
+}
+
+div.mousefixation {
+    z-index: 1000;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-image: radial-gradient(red, orange, yellow, transparent, transparent );
+    opacity: 0.1;    
+}
+
+div.click {
+    z-index: 2000;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+h1, h2 {
+    font-family: IBM Plex Sans VF, Helvetica Neue, Arial, sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-optical-sizing: auto;
+    font-size: 2em;
+    font-size-adjust: none;
+    font-stretch: 100%;
+    font-style: normal;
+    font-variant: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-variation-settings: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 2.5em;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0.5em;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    text-rendering: optimizelegibility;
+    vertical-align: baseline;
+    -moz-osx-font-smoothing: grayscale; 
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-family: IBM Plex Sans VF, Helvetica Neue, Arial, sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-optical-sizing: auto;
+    font-size: 1em;
+    font-size-adjust: none;
+    font-stretch: 100%;
+    font-style: normal;
+    font-variant: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-variation-settings: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding: 0px;
+    text-rendering: optimizelegibility;
+    vertical-align: baseline;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+div.numberedStep {
+    display: inline-block;
+    border-radius: 1em;
+    background-color: #2466f6;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.3em 0.6em 0.3em 0.6em;   
+}
+
+div#dataQualityMeter{
+    width: 100%;
+    text-align: right;
+    margin-bottom: 1em;
+}
+
+div#dataQualityMeter label {
+    display: inline-block; 
+    margin-right: 0.5em;
+    font-size: 1em;
+}
+
+div#dataQualityMeter a#moreInfo{
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+    top: -0.3em;
+    display: inline-block;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 1em;
+    background-color: #2466f6;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.3em 0.6em 0.3em 0.6em;   
+}
+
+input#submitIssue {
+    float: right;
+    padding: 0.5em;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: #29ab47;
+    border: solid 1px #258c3e;
+}
+
+input#submitIssue:disabled {
+    float: right;
+    background-color: #94d3a2;
+    border: 1px solid  #7caf89;
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;    
+    border-radius: 4px; 
+    width: 250px;
+    height: 20px;
+    display: inline-block; 
+    border: 1px solid #cccccc;
+    background-color: #fafcfc;
+}
+
+progress::-webkit-progress-bar {
+    border-radius: 4px; 
+    width: 250px;
+    height: 20px;
+    display: inline-block; 
+    border: 1px solid #cccccc;
+    background-color: #fafcfc;
+}
+
+progress.veryBad[value] {color:red}
+progress.veryBad::-webkit-progress-bar-value {background-color:red}
+progress.veryBad::-webkit-progress-value {background-color:red}
+progress.veryBad::-moz-progress-bar {background-color:red}
+
+progress.bad[value] {color:orange}
+progress.bad::-webkit-progress-bar-value {background-color:orange}
+progress.bad::-webkit-progress-value {background-color:orange}
+progress.bad::-moz-progress-bar {background-color:orange}
+
+progress.medium[value] {color:yellow}
+progress.medium::-webkit-progress-bar-value {background-color:yellow}
+progress.medium::-webkit-progress-value {background-color:yellow}
+progress.medium::-moz-progress-bar {background-color:yellow}
+
+progress.good[value] {color:yellowgreen}
+progress.good::-webkit-progress-bar-value {background-color:yellowgreen}
+progress.good::-webkit-progress-value {background-color:yellowgreen}
+progress.good::-moz-progress-bar {background-color:yellowgreen}
+
+progress.veryGood[value] {color:green}
+progress.veryGood::-webkit-progress-bar-value {background-color:green}
+progress.veryGood::-webkit-progress-value {background-color:green}
+progress.veryGood::-moz-progress-bar {background-color:green}
+
+input#issueTitle {
+    width: 98%;
+    border: 1px solid #d3d6db;
+    background-color: #fafbfc;
+    border-style:groove;
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+textarea#issueText {
+    width: 98%;
+    border: 1px solid #d3d6db;
+    background-color: #fafbfc;
+    border-style:groove;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    font-size: 1em;
+}
+
+div#explainability{
+    display: none;
+    text-align: left;
+    position: absolute;
+    border: 2px solid #d3d6db;
+    background-color: #fafbfc;
+    border-style: outset;
+    border-radius: 4px;
+    width: 40%;
+    left: 50%;
+    padding: 0 1em 0 1em;
+}
+
+div#explainability p:before{
+    content: '\21AA  '
+}
+
+/*
+Flip card CSS code based on W3Schools example
+*/
+
+ /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+ .flip-card {
+    position: absolute;
+    top: 12em; 
+    right: 17em;
+    background-color: transparent;
+    width: 23em;
+    height: 33em;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    z-index: 20;
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+      margin: 0;
+      padding: 0;
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    padding: 0em;
+    background-color: #5392ff;
+    color: #fff;
+    border-radius: 1em;
+    background-image: url('../images/card_game-logo.png');
+    background-position: center center;
+    background-repeat: no-repeat;    
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: #34bc6e;
+    color: #fff;
+    transform: rotateY(180deg);
+    border-radius: 1em;
+  } 
+
+  div#cardFrontContent {
+    height: 80%;
+    width: 100%;
+    background-image: url('../images/renew.svg');
+    background-position: 50% 80%;
+    background-repeat: no-repeat;
+    background-size: 3em;
+  }
+
+  div#cardFrontContent ul {
+      margin: 0;
+      padding: 0;
+  }
+
+  div#cardFrontContent ul li {
+      display: block;
+      background-color: #25467a ;
+      color: #fff;
+      padding: 0.5em;
+      margin: 0.3em;
+      border-radius: 0.5em;
+  }
+
+  div#cardBackContent {
+      padding: 1em 1em 1em 1em;
+      font-size: 1.5em;
+      vertical-align: middle ;
+      max-height: 18em;
+  }
+
+  div#cardBackContent strong {
+    font-size: 1.5em;
+    color: #fff;
+}  
+
+  div#cardBackContent a, div#cardBackContent a:visited, div#cardBackContent a:active {
+    font-size: 1em;
+    color: #fff;
+    font-weight: normal;
+}
+
+div#cardBackContent span.playerName {
+    font-size: 0.01em ;
+    color: #34bc6e ;
+    margin: 0;
+    padding: 0;
+    line-height: 0%;
+    height: 0.01em;
+    display: inline;
+}
+
+.accessLetter {
+    text-decoration: underline;
+}
+
+input#player {
+    width: 100%;
+}
+
+
+  div#recommendation, div#playersList {
+    padding: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #24a148;
+    color: #fff;
+    border-radius: 0.5em;
+    min-height: 5em;
+  }
+
+  div#recommendation a, div#recommendation a:visited, div#recommendation a:active{
+    color: #fff;
+    font-weight: normal;
+  }
+  
+  div#recommendationContent , div#playersListContent { 
+        background-color: #198038;
+        color: #fff;
+        padding: 0.5em;
+        margin: 0.3em;
+        border-radius: 0.5em;     
+  }
+
+  ul#playersListContent li { 
+    background-color: #198038;
+    color: #fff;
+    height: 1.4em;
+    padding: 0.4em 0.4em 0.4em 0.7em;
+    margin: 0.3em 0.3em 0.3em -2em;
+    border-radius: 1em;
+    list-style: none;
+  }
+  
+  ul#playersListContent li a.removePlayer {
+    float: right; 
+    height: 2em;
+    margin-top: -0.3em;
+    margin-right: -0.3em;
+  }
+
+  ul#playersListContent li a.removePlayer:hover {
+      background-color: #fff;
+      opacity: 0.5;
+      border-radius: 1em;
+  }
+
+  ul#playersListContent li a.removePlayer img {
+    height: 100%;
+  }
+
+  ul#playersListContent li.selectedPlayer { 
+    position: relative;
+    left: 2em;
+  }
+
+  div#definitions {
+    padding: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #bf93eb;
+    color: #fff;
+    border-radius: 0.5em;
+    min-height: 4.5em;
+  }
+
+  div#definitionsContent strong {
+    display: inline-block;
+    background-color: #9753e1;
+    color: #fff;
+    padding: 0.5em;
+    margin: 0.3em;
+    border-radius: 0.5em;
+  }
+
+  #drawCard {
+      position: absolute;
+      right: 33em ;
+      top: 5em;
+  }
+
+  #skipCard {
+    position: absolute;
+    right: 18em ;
+    top: 5em;
+}
+
+div#progressBarContainer {
+    position: absolute;
+    right: 17em;
+    top: 49em;
+    width: 23em;
+    height: 1.8em;
+    background-color: #cccccc;
+    color: #000;
+    border-radius: 1em;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 0.2em;
+    z-index: 0;
+}
+
+div#progressBar {
+    position: absolute;
+    right: 17em;
+    top: 49em;
+    width: 25%;
+    height: 1.8em;
+    background-color: #25467a;
+    color: #000;
+    border-radius: 1em;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 0.2em;
+    z-index: 1;
+}
+  
+div#progressBarContainer span {
+    width: 25%;
+    color: #000;
+    position: relative;
+    z-index: 2;
+    top: -1.5em;
+}
+
+span#suit {
+    background-color: inherit;
+    width: 24em;
+    top: 0em;
+    left: 0em;
+    font-size: 0.7em;
+    color: #fff;
+    display: inline-block;
+    border-radius: 0.7em;
+    padding: 0.5em;
+    margin-bottom: 0.2em;
+    position: absolute;
+}
+
+span#phase {
+    background-color: inherit;
+    width: 24em;
+    bottom: 0em;
+    left: 0;
+    font-size: 0.7em;
+    color: #fff;
+    display: inline-block;
+    border-radius: 0.7em;
+    padding: 0.5em;
+    margin-bottom: 0.2em;
+    position: absolute;
+}
+
+.phase1 { background-color: #42be65; }
+.phase2 { background-color: #24a148; }
+.phase3 { background-color: #198038; }
+.phase4 { background-color: #0e6027; }
+
+.general { background-color: #3c8444; }
+.practices-and-actions { background-color: #7c4195; }
+.impact-and-outcomes { background-color: #b8354c; }
+.stakeholders { background-color: #e18240; }
+.history { background-color: #203b59; } 
+
+/* .suit-history { background-image: url('../images/suit-history.svg'); background-position: 1em 1em; background-repeat: no-repeat; }
+.suit-stakeholders { background-image: url('../images/suit-stakeholders.svg'); background-position: right top; background-repeat: no-repeat; }
+.suit-tools { background-image: url('../images/suit-tools.svg'); background-position: right top; background-repeat: no-repeat; }
+.suit-principle { background-image: url('../images/suit-impact.svg'); background-position: right top; background-repeat: no-repeat; }
+.suit-principle { background-image: url('../images/suit-principle.svg'); background-position: right top; background-repeat: no-repeat; } */
+
+div#feedback {
+    margin-top: 0.5em;
+}
+
+div#feedback label {
+    color: #defbe6;
+}
+
+div#feedback img {
+    width: 2em;
+    height: 2em;
+}
+
+div#feedback a {
+    border-radius: 0.5em;
+    padding: 1.2em 0.3em 0.0em 0.3em;
+}
+
+div#feedback a.selected {
+    background-color: #fff;
+    opacity: 0.5;
+}
+
+div#feedback a:active, div#feedback a:hover, div#feedback a:focus {
+    background-color: #fff;
+    opacity: 0.5;
+}
+
+div#instructions {
+    background-color: #f4f4f4;
+    width: 100%;
+    padding: 1em 2em 1em 1em;
+    margin: 0;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+    color: rgb(22, 22, 22);
+    font-family: IBM Plex Sans VF, Helvetica Neue, Arial, sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-size-adjust: none;
+    font-stretch: 100%;
+    font-style: normal;
+    font-variant: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-variation-settings: normal;
+    font-weight: 400;
+    letter-spacing: 0.16px;
+    line-height: 20px;
+    text-rendering: optimizelegibility;
+    vertical-align: baseline;
+    visibility: visible;
+}
+
+div#instructions #closeInstructionsLink {
+    width: 3em;
+    float: right;
+}
+
+input#topic { 
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.hint {
+    display: inline-block;
+    text-decoration: dotted;
+    border-bottom: 1px #000 dotted;
+}
+
+div#timer {
+    position: absolute;
+    right: 17em;
+    top: 9em;
+    width: 23em;
+    height: 1.5em;
+    background-color: #fff;
+    color: #000;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0;
+    z-index: 0;
+}
+
+div#timer span#time {
+    background-color: #78a9ff;
+    border-radius: 1em;
+    padding: 0.4em 1.4em 0.4em 1.4em;
+}
+
+div#timer #timerSubtract{
+    position: relative;
+    right: -0.3em;
+    top: 0.4em;
+}
+
+div#timer #timerAdd{
+    position: relative;
+    left: -0.3em;
+    top: 0.4em;
+}
+
+div#privacyNotice {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    padding: 1.5em;
+    z-index: 999;
+    opacity: 0.8;
+    text-align: center;
+}
+
+div#privacyNotice p {
+    color: #fff;
+}
+
+div#privacyNotice p a, div#privacyNotice p a:visited {
+    font-weight: bold;
+    color: #fff;
+}
+
+div#cookiePolicy {
+    background-color: #000;
+    color: #fff;
+    text-align: left;
+}
+
+div#printFavorite {
+    position: absolute;
+    right: 1.5em;
+    top: 1em;
+}
+
+div#printFavorite a {
+    text-decoration: none;
+}
+
+div#printFavorite span#favoriteCount {
+    position: relative;
+    top: -15px;
+    background-color: #da1e28;
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #fff;
+    padding: 0.2em 0.4em 0.2em 0.4em;
+    border-radius: 1em;
+    display: inline-block;
+}

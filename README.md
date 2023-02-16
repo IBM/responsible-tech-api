@@ -1,15 +1,41 @@
-<!-- This should be the location of the title of the repository, normally the short name -->
-# repo-template
+# responsible-tech-api 
 
-<!-- Build Status, is a great thing to have at the top of your repository, it shows that you take your CI/CD as first class citizens -->
-<!-- [![Build Status](https://travis-ci.org/jjasghar/ibm-cloud-cli.svg?branch=master)](https://travis-ci.org/jjasghar/ibm-cloud-cli) -->
+## Framework API
 
-<!-- Not always needed, but a scope helps the user understand in a short sentance like below, why this repo exists -->
-## Scope
+One of our efforts under the Responsible and Inclusive Tech initiative is to create a framework to help people to reflect about their projects and their actions so that they can anticipate and mitigate negative impacts very early in projects.
 
-The purpose of this project is to provide a template for new open source repositories.
+The proposed framework comprises 3 perspectives/forces (self, business, and society), shedding light on each of their intentions, motivations, and past actions, while actively working in the present to build a responsible and inclusive future.
 
-<!-- A more detailed Usage or detailed explaination of the repository here -->
+On top of these perspectives, the framework puts forth a richer context of use and design mapping to promote awareness and reveal a wider range of impacts and considerations.
+
+### Self
+
+Self accounts for individual interests or smaller team goals when tackling technical challenges, such as creating scientific breakthroughs, advancing knowledge, or increasing eminence and recognition.
+
+### Business
+
+Business accounts for larger teams, internal organizations, clients, and potential competitors when addressing technical and user needs, increasing efficiency, lowering costs, defining strategy, or conforming to regulations.
+
+### Society
+
+Society accounts for people and their communities, as well as any associated laws and cultural norms, concerned primarily with (in)direct impacts on work, environment, wealth, health, and fundamental rights.
+
+This framework was developed to generate a collective and collaborative understanding about various IBM-wide research efforts in the context of societal benefit, impact, and inclusion. We recognize that deeply understanding various aspects of potential outcomes of the technology we create is important to our research community, as is anticipating and mitigating unintended harms.
+
+### The API
+
+Part of the framework considers a <a href="./static/json/framework_questions.json">set of questions</a> covering different types, different project stages, and different perspectives.
+Thus, this API aims at supporting people to use the R&I Framework, enabling easier connection of multiple content management systems to a recommendation service that brings contextualized R&I information. The planned recommendations include questions from the framework, stakeholders, and definitions about R&I terms.
+
+- /incltech/question/
+- /incltech/stakeholder/
+- /incltech/define/
+- /incltech/initgame/
+
+You can play with our Responsible Tech Cards here: https://incltech.mybluemix.net/incltech/static/game.html
+
+Or, you can play with our Swagger API here: https://incltech.mybluemix.net/incltech/api-docs/
+
 ## Usage
 
 This repository contains some example best practices for open source repositories:
@@ -72,6 +98,6 @@ If you would like to see the detailed LICENSE click [here](LICENSE).
 Optionally, you may include a list of authors, though this is redundant with the built-in
 GitHub list of contributors.
 
-- Author: New OpenSource IBMer <new-opensource-ibmer@ibm.com>
+- Author: Vagner Santana <vsantana@ibm.com>
 
 [issues]: https://github.com/IBM/repo-template/issues/new

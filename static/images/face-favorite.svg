@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="icon"
+   viewBox="0 0 32 32"
+   version="1.1"
+   sodipodi:docname="face-favorite.svg"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1031"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="24.34375"
+     inkscape:cx="7.0038511"
+     inkscape:cy="13.535302"
+     inkscape:window-width="1792"
+     inkscape:window-height="1067"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="icon" />
+  <defs
+     id="defs1015">
+    <style
+       id="style1013">.cls-1{fill:none;}</style>
+  </defs>
+  <title
+     id="title1017">face--add</title>
+  <path
+     d="M16,22a6,6,0,0,1-5.14-2.92l-1.71,1a8,8,0,0,0,13.7,0l-1.71-1A6,6,0,0,1,16,22Z"
+     id="path1019" />
+  <path
+     d="M11.5,11A2.5,2.5,0,1,0,14,13.5,2.48,2.48,0,0,0,11.5,11Z"
+     id="path1023" />
+  <path
+     d="M20.5,11A2.5,2.5,0,1,0,23,13.5,2.48,2.48,0,0,0,20.5,11Z"
+     id="path1025" />
+  <path
+     d="M27.61,13A12.33,12.33,0,0,1,28,16,12,12,0,1,1,16,4V2A14,14,0,1,0,29.67,13Z"
+     id="path1027" />
+  <rect
+     id="_Transparent_Rectangle_"
+     data-name="&lt;Transparent Rectangle&gt;"
+     class="cls-1"
+     width="32"
+     height="32" />
+  <path
+     d="m 27.788784,0.70649344 a 2.3421996,2.3421996 0 0 1 1.674223,0.70223156 2.4406833,2.4406833 0 0 1 0,3.4255204 L 25.026958,9.3259588 20.590909,4.8342455 a 2.4406833,2.4406833 0 0 1 0,-3.4255205 2.3464815,2.3464815 0 0 1 3.348446,0 l 1.087603,1.1132941 1.083321,-1.1047303 a 2.3293539,2.3293539 0 0 1 1.678505,-0.71079536 m 0,-0.85638 a 3.1985797,3.1985797 0 0 0 -2.286535,0.9591456 L 25.026958,1.2888318 24.551667,0.80925904 a 3.2071435,3.2071435 0 0 0 -4.57307,0 3.3056272,3.3056272 0 0 0 0,4.63301646 l 5.048361,5.1125895 5.048361,-5.1125895 a 3.3056272,3.3056272 0 0 0 0,-4.63301656 3.2071435,3.2071435 0 0 0 -2.286535,-0.9591455 z"
+     id="path928"
+     style="stroke-width:0.42819" />
+  <metadata
+     id="metadata1398">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>face--add</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

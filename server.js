@@ -11,7 +11,6 @@ const fs = require( 'fs' ) ;
 const natural = require( 'natural' ) ;
 const swaggerJsDoc = require( 'swagger-jsdoc' ) ;
 const swaggerUi = require( 'swagger-ui-express' ) ;
-const https = require( 'https' ) ;
 
 const PORT = process.env.PORT || 8080 ;
 

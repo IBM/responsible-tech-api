@@ -6,18 +6,14 @@
     "start": "node server.js"
   },
   "author": "Vagner Figueredo de Santana",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "dependencies": {
-    "@cloudant/cloudant": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "http": "^0.0.1-security",
-    "https": "^1.0.0",
     "natural": "^5.0.3",
     "nodemon": "^2.0.4",
-    "socketio": "^1.0.0",
     "swagger-jsdoc": "^6.0.0-rc.4",
     "swagger-ui-express": "^4.1.5"
   }

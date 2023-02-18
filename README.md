@@ -1,40 +1,33 @@
 # responsible-tech-api 
 
-## Framework API
+## Responsible and Inclusive Framework 
 
-One of our efforts under the Responsible and Inclusive Tech initiative is to create a framework to help people to reflect about their projects and their actions so that they can anticipate and mitigate negative impacts very early in projects.
+Technology development practices in industry are often primarily focused on business results, which risks creating unbalanced power relations between corporate interests and the needs or concerns of people who are affected by technology implementation and use. These practices, and their associated cultural norms, may result in uses of technology that have direct, indirect, short-term, and even long-term negative effects on groups of people, communities, and/or the environment.
 
-The proposed framework comprises 3 perspectives/forces (self, business, and society), shedding light on each of their intentions, motivations, and past actions, while actively working in the present to build a responsible and inclusive future.
-
-On top of these perspectives, the framework puts forth a richer context of use and design mapping to promote awareness and reveal a wider range of impacts and considerations.
-
-### Self
-
-Self accounts for individual interests or smaller team goals when tackling technical challenges, such as creating scientific breakthroughs, advancing knowledge, or increasing eminence and recognition.
-
-### Business
-
-Business accounts for larger teams, internal organizations, clients, and potential competitors when addressing technical and user needs, increasing efficiency, lowering costs, defining strategy, or conforming to regulations.
-
-### Society
-
-Society accounts for people and their communities, as well as any associated laws and cultural norms, concerned primarily with (in)direct impacts on work, environment, wealth, health, and fundamental rights.
-
-This framework was developed to generate a collective and collaborative understanding about various IBM-wide research efforts in the context of societal benefit, impact, and inclusion. We recognize that deeply understanding various aspects of potential outcomes of the technology we create is important to our research community, as is anticipating and mitigating unintended harms.
+The work the Responsible and Inclusive Tech Team develops is grounded on a formative framework (R&I Framework) that orients critical reflection around the social contexts of technology creation and use; the power dynamics between self, business, and societal stakeholders; the impacts of technology on various communities across past, present, and future dimensions; and the practical decisions that imbue technological artifacts with cultural values.
 
 ### The API
 
-Part of the framework considers a <a href="./static/json/framework_questions.json">set of questions</a> covering different types, different project stages, and different perspectives.
-Thus, this API aims at supporting people to use the R&I Framework, enabling easier connection of multiple content management systems to a recommendation service that brings contextualized R&I information. The planned recommendations include questions from the framework, stakeholders, and definitions about R&I terms.
+The API aims at providing multiple instantiations of the framework from high-granularity endpoints to standalone tools to be added to existing development methods, design activities, research practices, and/or business proceses already in place.
+
+The API aims at supporting people to use the R&I Framework, enabling easier connection to contextualized information from R&I Framework, including questions from the framework, stakeholders, and definitions about R&I terms, and different ways of navigating through R&I Framework <a href="./static/json/framework_questions.json">questions</a> (e.g., Responsible Tech Cards).
 
 - /incltech/question/
 - /incltech/stakeholder/
 - /incltech/define/
 - /incltech/initgame/
 
-You can play with our Responsible Tech Cards here: https://incltech.mybluemix.net/incltech/static/game.html
+You can play with our Swagger API here: https://incltech.mybluemix.net/incltech/api-docs/
 
-Or, you can play with our Swagger API here: https://incltech.mybluemix.net/incltech/api-docs/
+## Reponsible Tech Cards
+
+Societal implications of technology are often considered after public deployment. However, broader impacts ought to be considered during the onset and throughout development to reduce potential for harmful uses, biases, and exclusions. There is a need for tools and frameworks that help technologists become more aware of broader contexts of their work and engage in more responsible and inclusive practices. In this context, we introduce an online card tool containing questions to scaffold critical reflection about projects’ impacts on society, business, and research. The tool was developed considering findings from five internal workshops with teams distributed across IBM, as well as interviews with people with disabilities to assess gameplay and mental models. The tool promoted discussions about challenging topics, reduced power gaps through democratized turn-taking, and enabled participants to identify concrete areas to improve their practice.
+
+![Responsible Tech Cards demo](./static/images/card_tool-demo.gif)
+
+You can play with Responsible Tech Cards here: https://incltech.mybluemix.net/incltech/static/game.html
+
+**Please cite as:** Salma Elsayed-Ali, Sara E Berger, Vagner Figueredo de Santana, and Juana Catalina Becerra Sandoval. 2023. Responsible & Inclusive Cards: An Online Card Tool to Promote Critical Reflection in Technology Industry Work Practices. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (CHI ’23), April 23–28, 2023, Hamburg, Germany. ACM, New York, NY, USA, 14 pages. https://doi.org/10.1145/3544548.3580771
 
 ## Usage
 

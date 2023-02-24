@@ -24,7 +24,9 @@ SPDX-License-Identifier: Apache2.0
     Dear visitor, we use cookies to remember your preferences and to analyze the usage of this tool, in an anonymous way. 
     Beyond registering visits, this tool also captures mouse and keyboard interaction data with research purposes in mind. 
     If you continue to use this tool, we assume that you are happy with it.
-    For more information, check out our <a href="https://w3.ibm.com/w3publisher/responsible-and-inclusive-technology/" target="_blank">website</a>, contact us in our Slack channel <a href="https://ibm-research.slack.com/archives/C023R2D8JPN" target="_blank">#responsible-and-inclusive-tech</a>, or read our <a href="#cookiePolicy" id="cookiePolicyLink">cookie policy</a>.<br>
+    For more information, check out our <a href="#cookiePolicy" id="cookiePolicyLink">cookie policy</a>.
+    If you want to report a bug or request a feature, pelase access our <a href="https://github.com/IBM/responsible-tech-api/issues" target="_blank">github repo and create an issue</a>.
+    <br>
     <button id="allowCookies">Ok</button> <button id="denyCookies">No</button>
   <div id="cookiePolicy">
     <h3>Cookie policy</h3>
@@ -374,6 +376,16 @@ function loadGameState(){
     cards = JSON.parse( readCookie( "favoriteCards" ) ) ;
     $( "span#favoriteCount" ).text( cards.length ) ;
   }
+
+  // Game instructions
+  if( readCookie( "instructions" ) !=  "" ){
+    if( readCookie( "instructions" ) == "hide" ){
+      $("#instructions").css( "display", "none" ) ;
+    }
+    else{
+      $("#instructions").css( "display", "none" ) ;
+    }
+  }
 }
 
 /************************
@@ -594,6 +606,7 @@ $( "#startGame" ).on( "click", function(){
             // Hiding instructions in case they are opened
             if( $("#instructions").css( "display" ) !== 'none' ){
               $("#instructions").slideToggle( "slow" ) ;
+              
             }
 
             updateProgressBar( $( window ).data( "card" ), $( window ).data( "size" ) ) ;
@@ -788,9 +801,12 @@ $( "#skipCard" ).on( "click", function(){
 /************************
  * Help
  ***********************/
-$("#instructions").toggle();
+// $("#instructions").toggle();
 $("#helpIcon, #closeInstructionsLink").on("click", function(){
   $("#instructions").slideToggle("hide");
+  if( readCookie( "allowCookies" ) == "true" ){
+    createCookie( "instructions", "hide" ) ;
+  }
 });
 
 /************************

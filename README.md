@@ -17,7 +17,7 @@ The API aims at supporting people to use the R&I Framework, enabling easier conn
 - /incltech/define/
 - /incltech/initgame/
 
-You can play with our Swagger API here: https://incltech.mybluemix.net/incltech/api-docs/
+You can play with our Swagger API here: https://incltech.vyl78fse4wb.us-south.codeengine.appdomain.cloud/incltech/api-docs/ 
 
 ## Reponsible Tech Cards
 
@@ -25,7 +25,7 @@ Societal implications of technology are often considered after public deployment
 
 ![Responsible Tech Cards demo](./static/images/card_tool-demo.gif)
 
-You can play with Responsible Tech Cards here: https://incltech.mybluemix.net/incltech/static/game.html
+You can play with Responsible Tech Cards here: https://ibm.biz/responsible-tech-cards
 
 **Please cite as:** Salma Elsayed-Ali, Sara E Berger, Vagner Figueredo de Santana, and Juana Catalina Becerra Sandoval. 2023. Responsible & Inclusive Cards: An Online Card Tool to Promote Critical Reflection in Technology Industry Work Practices. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (CHI ’23), April 23–28, 2023, Hamburg, Germany. ACM, New York, NY, USA, 14 pages. https://doi.org/10.1145/3544548.3580771
 
